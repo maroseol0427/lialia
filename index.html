@@ -1,0 +1,824 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="LIALIA — AI 뮤직 채널. 울고 싶은 날, 가장 신나는 노래. K-Indie · Light Rock · Bright Sadness.">
+  <title>LIALIA — LIA · Get Your Dream</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#07080b;
+      --bg2:#101218;
+      --panel:#14171e;
+      --ink:#f4f1ec;
+      --muted:#9a9aa8;
+      --silver:#c8ceda;
+      --line:rgba(255,255,255,.08);
+      --accent:#8eb4d4;
+      --coral:#e58b7a;
+      --max:1220px;
+      --ease:cubic-bezier(.2,.75,.2,1);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      background:var(--bg);color:var(--ink);
+      font-family:Manrope,system-ui,sans-serif;
+      letter-spacing:-.01em;overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    img{display:block;width:100%;height:100%;object-fit:cover}
+    button{font:inherit;border:0;background:none;color:inherit;cursor:pointer}
+    .wrap{width:min(var(--max),calc(100% - 48px));margin:0 auto}
+    .grain{
+      position:fixed;inset:0;pointer-events:none;z-index:40;opacity:.04;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .nav{
+      position:fixed;inset:0 0 auto;z-index:30;
+      display:flex;justify-content:space-between;align-items:center;
+      padding:20px 28px;
+      background:linear-gradient(to bottom,rgba(7,8,11,.88),transparent);
+      backdrop-filter:blur(10px);
+    }
+    .logo{
+      font-family:"Cormorant Garamond",serif;
+      letter-spacing:.32em;font-size:15px;font-weight:500;
+    }
+    .navlinks{display:flex;gap:26px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+    .navlinks a:hover{color:var(--ink)}
+    .nav-cta{
+      border:1px solid var(--line);padding:10px 16px;border-radius:999px;
+      font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--silver);
+      transition:.25s var(--ease);
+    }
+    .nav-cta:hover{border-color:var(--silver);color:var(--ink);background:rgba(255,255,255,.04)}
+
+    .hero{
+      min-height:100svh;position:relative;display:grid;align-items:end;overflow:hidden;
+    }
+    .hero-media{position:absolute;inset:0}
+    .hero-media img{
+      width:100%;height:100%;object-fit:cover;object-position:center 28%;
+      filter:saturate(.9) contrast(1.05);
+      transform:scale(1.04);
+      animation:heroDrift 18s ease-in-out infinite alternate;
+    }
+    @keyframes heroDrift{from{transform:scale(1.04) translateY(0)}to{transform:scale(1.08) translateY(-1.5%)}}
+    .hero-media:after{
+      content:"";position:absolute;inset:0;
+      background:
+        linear-gradient(90deg,rgba(7,8,11,.88) 0%,rgba(7,8,11,.35) 42%,rgba(7,8,11,.15) 68%,rgba(7,8,11,.55) 100%),
+        linear-gradient(0deg,rgba(7,8,11,.92) 0%,rgba(7,8,11,.2) 42%,transparent 70%);
+    }
+    .hero-copy{position:relative;z-index:2;padding:0 0 9vh;width:min(var(--max),calc(100% - 48px));margin:0 auto}
+    .eyebrow{
+      display:flex;align-items:center;gap:14px;
+      font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--silver);margin-bottom:22px;
+    }
+    .eyebrow:before{content:"";width:36px;height:1px;background:var(--coral)}
+    h1{
+      font-family:"Cormorant Garamond",serif;font-weight:500;
+      font-size:clamp(72px,14vw,168px);line-height:.82;letter-spacing:-.04em;
+    }
+    h1 em{font-style:italic;color:var(--silver);font-weight:400}
+    .hero-row{display:flex;flex-wrap:wrap;align-items:end;gap:28px;margin-top:28px}
+    .hero-tag{max-width:420px;color:var(--muted);line-height:1.8;font-size:15px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:14px 20px;border-radius:999px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+      transition:.28s var(--ease);
+    }
+    .btn-primary{background:var(--ink);color:#111}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(244,241,236,.18)}
+    .btn-ghost{border:1px solid var(--line);color:var(--ink);background:rgba(255,255,255,.03)}
+    .btn-ghost:hover{border-color:var(--silver);background:rgba(255,255,255,.06)}
+    .scroll-hint{
+      position:absolute;right:4vw;bottom:8vh;z-index:3;
+      font-size:10px;letter-spacing:.2em;text-transform:uppercase;writing-mode:vertical-rl;color:var(--muted);
+    }
+    .scroll-hint:after{
+      content:"";display:block;width:1px;height:56px;margin-top:12px;background:linear-gradient(#fff,transparent);
+      animation:pulse 2.2s infinite;
+    }
+    @keyframes pulse{0%,100%{opacity:.25;transform:scaleY(.5);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
+
+    section{padding:110px 0;position:relative}
+    .kicker{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--coral);margin-bottom:14px}
+    h2{
+      font-family:"Cormorant Garamond",serif;font-weight:500;
+      font-size:clamp(40px,6vw,72px);line-height:.98;letter-spacing:-.03em;margin-bottom:18px;
+    }
+    h2 i{font-style:italic;color:var(--muted);font-weight:400}
+    .lead{color:var(--muted);max-width:640px;line-height:1.85;font-size:15px}
+
+    /* ABOUT full-bleed */
+    .about{
+      padding:0;background:#0a0b0f;color:var(--ink);
+      min-height:min(86svh,900px);
+    }
+    .about-stage{
+      position:relative;min-height:min(86svh,900px);
+      display:grid;align-items:end;overflow:hidden;
+    }
+    .about .reveal,.music .reveal,.visual .head.reveal,.quote .reveal,.connect .reveal{opacity:1;transform:none}
+    .about-media{position:absolute;inset:0}
+    .about-media img{
+      width:100%;height:100%;object-fit:cover;object-position:center 22%;
+      filter:saturate(.92) contrast(1.04);
+      transform:scale(1.03);
+    }
+    .about-media:after{
+      content:"";position:absolute;inset:0;
+      background:
+        linear-gradient(105deg, rgba(7,8,11,.92) 0%, rgba(7,8,11,.72) 34%, rgba(7,8,11,.28) 58%, rgba(7,8,11,.55) 100%),
+        linear-gradient(0deg, rgba(7,8,11,.88) 0%, rgba(7,8,11,.25) 38%, transparent 70%);
+    }
+    .about-inner{
+      position:relative;z-index:2;
+      width:min(var(--max),calc(100% - 48px));
+      margin:0 auto;
+      padding:120px 0 72px;
+      display:grid;
+      grid-template-columns:minmax(0,1.15fr) minmax(240px,.75fr);
+      gap:clamp(24px,5vw,56px);
+      align-items:end;
+    }
+    .about .kicker{color:var(--coral)}
+    .about h2{color:var(--ink);text-shadow:0 10px 40px rgba(0,0,0,.35)}
+    .about-quote{
+      font-family:"Cormorant Garamond",serif;
+      font-size:clamp(28px,4vw,48px);
+      line-height:1.18;letter-spacing:-.03em;
+      margin:18px 0 22px;
+      max-width:18ch;
+    }
+    .about-quote em{font-style:italic;color:var(--silver)}
+    .about-copy{
+      max-width:560px;
+      color:rgba(244,241,236,.88);
+      line-height:1.9;
+      font-size:15px;
+    }
+    .about-copy p{margin-bottom:14px}
+    .about-copy .tagline{
+      font-size:13px;letter-spacing:.12em;text-transform:uppercase;
+      color:var(--coral);margin-bottom:16px;
+    }
+    .about-side{
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:22px;
+      padding:22px 20px;
+      background:rgba(10,12,16,.42);
+      backdrop-filter:blur(14px);
+      box-shadow:0 24px 60px rgba(0,0,0,.28);
+    }
+    .about-side h3{
+      font-family:"Cormorant Garamond",serif;
+      font-weight:500;font-size:28px;margin-bottom:14px;letter-spacing:-.02em;
+    }
+    .style-list{list-style:none;display:grid;gap:10px;margin-top:6px}
+    .style-list li{
+      display:grid;grid-template-columns:86px 1fr;gap:10px;
+      font-size:13px;padding:10px 0;border-top:1px solid rgba(255,255,255,.1);
+    }
+    .style-list li:first-child{border-top:0;padding-top:0}
+    .style-list b{color:var(--silver);font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:10px;padding-top:3px}
+    .style-list span{color:rgba(244,241,236,.86);line-height:1.55}
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+    .chip{
+      border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:8px 12px;
+      font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--silver);
+      background:rgba(255,255,255,.03);
+    }
+
+    .music{background:var(--bg)}
+    .feature{
+          display:grid;grid-template-columns:minmax(240px,.72fr) 1.28fr;
+          gap:clamp(28px,5vw,56px);align-items:start;margin-top:48px;
+          padding:28px;border:1px solid var(--line);border-radius:28px;
+          background:
+            radial-gradient(circle at 15% 20%,rgba(229,139,122,.10),transparent 42%),
+            linear-gradient(160deg,rgba(255,255,255,.03),transparent 55%),
+            var(--panel);
+        }
+        .cover-stack{
+          position:relative;
+          width:100%;
+          max-width:420px;
+          margin:0 auto;
+        }
+        .cover-stack .main{
+          border-radius:22px;overflow:hidden;aspect-ratio:9/16;
+          box-shadow:0 30px 80px rgba(0,0,0,.5);
+          background:linear-gradient(160deg,#1a1416,#0d0f14);
+        }
+        .cover-stack .main img{
+          object-fit:cover;
+          object-position:center top;
+          width:100%;height:100%;
+        }
+        .cover-stack .ghost{
+          position:absolute;inset:auto -10% 6% auto;width:38%;aspect-ratio:1;
+          border-radius:14px;overflow:hidden;opacity:.9;
+          transform:rotate(8deg);z-index:2;
+          box-shadow:0 18px 40px rgba(0,0,0,.5);
+          border:1px solid rgba(255,255,255,.14);
+        }
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);margin-bottom:12px;
+    }
+    .feature h3{
+      font-family:"Cormorant Garamond",serif;font-weight:500;
+      font-size:clamp(40px,5vw,68px);line-height:.95;letter-spacing:-.03em;margin-bottom:14px;
+    }
+    .feature .desc{color:var(--muted);line-height:1.8;max-width:520px;margin-bottom:22px}
+    .tracklist{border-top:1px solid var(--line);margin-top:8px}
+    .track{
+          display:grid;grid-template-columns:42px 1fr auto;gap:12px;align-items:center;
+          min-height:58px;padding:8px 4px;border-bottom:1px solid var(--line);
+          transition:.25s var(--ease);cursor:pointer;width:100%;text-align:left;background:transparent;border-left:0;border-right:0;border-top:0;
+        }
+        .track:hover,.track.active{background:rgba(255,255,255,.03);padding-left:10px;padding-right:10px;border-radius:10px}
+        .track .num{font-family:"Cormorant Garamond",serif;color:#6f7078;font-size:15px}
+        .track strong{display:block;font-weight:500;font-size:14px}
+        .track small{color:#7d7e88;font-size:12px}
+        .track .open{
+          font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
+          border:1px solid rgba(142,180,212,.28);border-radius:999px;padding:8px 12px;
+        }
+        .track:hover .open,.track.active .open{background:rgba(142,180,212,.12)}
+        .spotify-link{
+          display:inline-flex;align-items:center;gap:8px;margin-top:18px;
+          font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--silver);
+          border:1px solid var(--line);border-radius:999px;padding:10px 16px;
+        }
+        .spotify-link:hover{border-color:var(--silver);color:var(--ink);background:rgba(255,255,255,.04)}
+        .spotify-box{
+          margin-top:28px;border-radius:18px;overflow:hidden;
+          border:1px solid var(--line);background:#0d0f14;
+        }
+        .spotify-box iframe{display:block;width:100%;border:0;min-height:152px}
+    .albums{
+      display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:56px;
+    }
+    .album{
+      border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--bg2);
+      transition:transform .4s var(--ease), border-color .3s;
+    }
+    .album:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.18)}
+    .album .art{aspect-ratio:1;overflow:hidden}
+    .album .art img{transition:transform .7s var(--ease);filter:saturate(.92)}
+    .album:hover .art img{transform:scale(1.05);filter:saturate(1.05)}
+    .album .meta{padding:14px 14px 16px}
+    .album .meta b{display:block;font-size:13px;font-weight:600;margin-bottom:4px}
+    .album .meta span{font-size:11px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+
+    .visual{background:#0c0d11;padding-bottom:40px}
+    .visual .head{width:min(var(--max),calc(100% - 48px));margin:0 auto 40px}
+    .masonry{
+      columns:3;column-gap:12px;width:min(1400px,calc(100% - 24px));margin:0 auto;
+    }
+    .shot{
+      break-inside:avoid;margin:0 0 12px;position:relative;overflow:hidden;border-radius:18px;
+      border:1px solid var(--line);background:#15171d;
+    }
+    .shot img{width:100%;height:auto;display:block;transition:transform 1s var(--ease), filter .5s;filter:saturate(.9)}
+    .shot:hover img{transform:scale(1.03);filter:saturate(1.06)}
+    .shot figcaption{
+      position:absolute;left:14px;bottom:12px;right:14px;
+      font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+      text-shadow:0 2px 10px #000;color:#f2efe9;opacity:.9;
+    }
+    .shot.wide img{aspect-ratio:16/9;object-fit:cover;height:auto}
+    .shot.tall img{aspect-ratio:3/4;object-fit:cover;height:auto}
+
+    .quote{
+      background:linear-gradient(135deg,#9fc4d6 0%,#b7cfe0 45%,#d7e6ef 100%);
+      color:#121619;text-align:center;padding:120px 24px;
+    }
+    .quote p{
+      font-family:"Cormorant Garamond",serif;
+      font-size:clamp(36px,6.5vw,88px);line-height:1.05;letter-spacing:-.04em;max-width:980px;margin:0 auto;
+    }
+    .quote p i{font-style:italic;color:#fff;text-shadow:0 8px 30px rgba(0,0,0,.08)}
+    .quote small{display:block;margin-top:28px;letter-spacing:.2em;text-transform:uppercase;font-size:11px;color:#2d3a42}
+
+    .connect{padding:100px 0 120px;background:#06070a}
+    .connect-grid{
+      display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:end;
+    }
+    .connect h2{font-size:clamp(56px,10vw,120px);line-height:.85;margin:0}
+    .socials{display:grid;gap:10px}
+    .social{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:16px 18px;border:1px solid var(--line);border-radius:14px;
+      color:var(--silver);transition:.25s var(--ease);
+    }
+    .social:hover{border-color:var(--silver);color:var(--ink);background:rgba(255,255,255,.03);transform:translateX(4px)}
+    .social span{font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+    .foot-note{margin-top:48px;color:#5c5d66;font-size:12px;letter-spacing:.1em;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease), transform .8s var(--ease)}
+        .reveal.in{opacity:1;transform:none}
+
+        /* BG music player — 1min previews only */
+        .player-dock{
+          position:fixed;left:50%;bottom:18px;transform:translateX(-50%);
+          z-index:50;width:min(560px,calc(100% - 28px));
+          display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;
+          padding:12px 14px;border-radius:18px;
+          background:rgba(12,14,18,.82);border:1px solid rgba(255,255,255,.12);
+          backdrop-filter:blur(16px);box-shadow:0 18px 50px rgba(0,0,0,.45);
+        }
+        .player-dock button.icon{
+          width:42px;height:42px;border-radius:50%;
+          display:grid;place-items:center;
+          background:var(--ink);color:#111;font-size:14px;font-weight:700;
+          transition:.2s var(--ease);
+        }
+        .player-dock button.icon:hover{transform:scale(1.04)}
+        .player-dock .meta{min-width:0}
+        .player-dock .meta .label{
+          font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);margin-bottom:2px;
+        }
+        .player-dock .meta strong{
+          display:block;font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+        }
+        .player-dock .meta small{color:var(--muted);font-size:11px}
+        .player-dock .side{display:flex;gap:6px;align-items:center}
+        .player-dock .side button.ghost-btn{
+          width:34px;height:34px;border-radius:10px;border:1px solid var(--line);
+          color:var(--silver);font-size:12px;background:rgba(255,255,255,.03);
+        }
+        .player-dock .side button.ghost-btn:hover{border-color:var(--silver);color:var(--ink)}
+        .player-progress{
+          grid-column:1/-1;height:3px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:2px;
+        }
+        .player-progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--coral),var(--accent));border-radius:99px}
+        .play-gate{
+          position:fixed;inset:0;z-index:60;display:none;place-items:center;
+          background:rgba(7,8,11,.55);backdrop-filter:blur(6px);
+        }
+        .play-gate.show{display:grid}
+        .play-gate .card{
+          text-align:center;padding:28px 32px;border-radius:22px;
+          border:1px solid rgba(255,255,255,.14);background:rgba(16,18,24,.92);
+          box-shadow:0 30px 80px rgba(0,0,0,.45);max-width:360px;
+        }
+        .play-gate .card p{color:var(--muted);font-size:13px;line-height:1.7;margin:10px 0 18px}
+        .play-gate .card button{
+                  padding:12px 22px;border-radius:999px;
+                  background:linear-gradient(135deg,#f0a0b4 0%,#e58b9a 45%,#d9788c 100%);
+                  color:#1a1014;
+                  font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;
+                  box-shadow:0 10px 28px rgba(229,139,154,.35);
+                  transition:transform .2s var(--ease), box-shadow .2s var(--ease), filter .2s;
+                }
+                .play-gate .card button:hover{
+                  transform:translateY(-1px);
+                  filter:brightness(1.05);
+                  box-shadow:0 14px 36px rgba(229,139,154,.45);
+                }
+        body.has-player{padding-bottom:96px}
+        .bg-playlist{margin-top:36px}
+        .bg-playlist .pl-head{
+          display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:14px;flex-wrap:wrap;
+        }
+        .bg-playlist .pl-head h3{
+          font-family:"Cormorant Garamond",serif;font-weight:500;font-size:28px;letter-spacing:-.02em;
+        }
+        .bg-playlist .pl-head span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+        .pl-item{
+          display:grid;grid-template-columns:40px 1fr auto;gap:12px;align-items:center;
+          padding:12px 10px;border-top:1px solid var(--line);cursor:pointer;border-radius:12px;
+          transition:.2s var(--ease);
+        }
+        .pl-item:hover,.pl-item.active{background:rgba(255,255,255,.04)}
+        .pl-item.active{border-color:transparent}
+        .pl-item .n{font-family:"Cormorant Garamond",serif;color:#6f7078}
+        .pl-item b{display:block;font-size:14px;font-weight:500}
+        .pl-item small{color:#7d7e88;font-size:12px}
+        .pl-item .tag{
+          font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);
+          border:1px solid rgba(142,180,212,.28);border-radius:999px;padding:6px 10px;
+        }
+        .pl-item.active .tag{background:rgba(142,180,212,.12)}
+
+        @media (max-width:960px){
+      .about-inner,.feature,.connect-grid{grid-template-columns:1fr}
+      .about-side{max-width:480px}
+      .albums{grid-template-columns:repeat(2,1fr)}
+      .masonry{columns:2}
+      .navlinks{display:none}
+      .cover-stack .ghost{display:none}
+      .about-stage,.about{min-height:auto}
+      .about-inner{padding:100px 0 56px}
+    }
+    @media (max-width:560px){
+      .wrap,.hero-copy,.visual .head,.about-inner{width:calc(100% - 32px)}
+      section{padding:80px 0}
+      .albums{grid-template-columns:1fr 1fr}
+      .masonry{columns:1;width:calc(100% - 20px)}
+      .scroll-hint{display:none}
+      .feature{padding:18px}
+    }
+    @media (prefers-reduced-motion:reduce){
+      *,*::before,*::after{animation:none!important;transition:none!important}
+      .reveal{opacity:1;transform:none}
+    }
+  </style>
+</head>
+<body class="has-player">
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="play-gate" id="playGate" aria-hidden="true">
+      <div class="card">
+        <div class="kicker" style="margin:0">Welcome</div>
+        <p><b style="color:var(--ink);font-weight:600">Welcome to LIALIA</b><br>
+        Artist channel · music, film &amp; mood.<br>
+        Tap enter to step inside.</p>
+        <button type="button" id="gatePlay">Enter →</button>
+      </div>
+    </div>
+
+  <div class="player-dock" id="playerDock" role="region" aria-label="Background music preview">
+    <button type="button" class="icon" id="btnPlay" aria-label="재생/일시정지">▶</button>
+    <div class="meta">
+      <div class="label">Preview · 1:00 fade-out</div>
+      <strong id="nowTitle">여전히 그날에 (Acoustic)</strong>
+            <small id="nowSub">guitar only · preview 1:00</small>
+    </div>
+    <div class="side">
+      <button type="button" class="ghost-btn" id="btnPrev" aria-label="이전">‹</button>
+      <button type="button" class="ghost-btn" id="btnNext" aria-label="다음">›</button>
+    </div>
+    <div class="player-progress" aria-hidden="true"><i id="progBar"></i></div>
+  </div>
+
+  <audio id="bgAudio" preload="metadata" playsinline></audio>
+
+  <header class="nav">
+    <a class="logo" href="#top">LIALIA</a>
+    <nav class="navlinks" aria-label="주요 메뉴">
+      <a href="#about">About</a>
+      <a href="#music">Music</a>
+      <a href="#visual">Visual</a>
+      <a href="#connect">Connect</a>
+    </nav>
+    <a class="nav-cta" href="https://open.spotify.com/artist/6dA1aRmKkKNs4bi3eg28QI" target="_blank" rel="noopener">Spotify ↗</a>
+  </header>
+
+  <section class="hero" id="top">
+    <div class="hero-media">
+      <img src="assets/hero.webp" alt="LIA — Get Your Dream 시네마틱 장면">
+    </div>
+    <div class="hero-copy">
+      <div class="eyebrow">AI Music · Singer · Seoul · Since 2025</div>
+      <h1>LIA<br><em>LIALIA</em></h1>
+      <div class="hero-row">
+        <p class="hero-tag">“울고 싶은 날, 가장 신나는 노래.” 밝게 웃지만 속으로는 수많은 생각을 품은 이야기들을, 노래로 이어 붙인다.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://open.spotify.com/album/1jhLNO6mz8x4n75y2yi8Be" target="_blank" rel="noopener">▶ Get your dream</a>
+          <a class="btn btn-ghost" href="#music">Listen on Spotify</a>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint">Scroll</div>
+  </section>
+
+  <main>
+    <section class="about" id="about">
+      <div class="about-stage">
+        <div class="about-media">
+          <img src="assets/about-hero.webp" alt="LIA editorial portrait — Contemporary Korean fashion">
+        </div>
+        <div class="about-inner">
+          <div class="reveal">
+            <div class="kicker">01 · About LIA</div>
+            <h2>A face made of <i>silver,</i><br>a voice made of feeling.</h2>
+            <p class="about-quote">“울고 싶은 날,<br><em>가장 신나는 노래</em>”</p>
+            <div class="about-copy">
+              <p class="tagline">YouTube · @LIALIACUTE7</p>
+              <p>AI 뮤직 채널 <b>LIALIA</b> 입니다.<br>
+              밝게 웃지만 속으로는 수많은 생각을 품고 사는, 이야기를 노래로 만들어 나가는 공간입니다.</p>
+              <p>슬픈 가사지만 처지지는 않게,<br>
+              우울한 날에도 힘차게 걸을 수 있게.<br>
+              일상에 작은 <b>‘공감의 해방구’</b>가 되기를 바랍니다.</p>
+              <div class="chips">
+                <span class="chip">Bright Sadness</span>
+                <span class="chip">K-Indie Band</span>
+                <span class="chip">Get your dream</span>
+                <span class="chip">AI Music</span>
+              </div>
+            </div>
+          </div>
+          <aside class="about-side reveal">
+            <h3>Music Style</h3>
+            <ul class="style-list">
+              <li><b>Genre</b><span>K-Indie Band, Light Rock, Upbeat Acoustic</span></li>
+              <li><b>Vibe</b><span>신나는 밴드 사운드 뒤에 숨겨진 애틋한 진심<br>(Bright Sadness)</span></li>
+              <li><b>Look</b><span>Silver hair · Deep gray eyes · KR twenties</span></li>
+              <li><b>World</b><span>Music · Film · Beauty · Mood</span></li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="music" id="music">
+      <div class="wrap">
+        <div class="reveal">
+          <div class="kicker">02 · Selected music</div>
+          <h2>Songs for the <i>dreamers</i><br>still on their way.</h2>
+          <p class="lead">Bright band energy, soft heart underneath. Latest album <b style="color:var(--ink);font-weight:600">Get your dream</b> and selected catalog — listen on Spotify.</p>
+        </div>
+
+        <div class="feature reveal">
+          <div class="cover-stack">
+                      <div class="main"><img src="assets/gyd-cover.webp" alt="LIALIA Light Rock — Latest Album 08 portrait cover"></div>
+                    </div>
+          <div>
+            <div class="badge">Latest · Album 08 · 2026</div>
+            <h3>Get your<br>dream</h3>
+            <p class="desc">멈춰 있던 마음을 다시 달리게 하는 장면들. 맑은 하늘, 밤의 빗길, 무대 뒤의 숨결까지 — LIA가 꿈을 향해 건네는 플레이리스트.</p>
+
+            <div class="tracklist" id="gydTracks" role="list">
+                          <button type="button" class="track" role="listitem" data-src="audio/gyd_01_get-your-dream.mp3" data-title="꿈의 조각을 잡고서" data-sub="Get your dream · preview 1:00">
+                            <span class="num">01</span>
+                            <span><strong>꿈의 조각을 잡고서</strong><small>Get your dream · preview 1:00</small></span>
+                            <span class="open">Play</span>
+                          </button>
+                          <button type="button" class="track" role="listitem" data-src="audio/gyd_02_sunshower.mp3" data-title="맑은 하늘 너와 빗물" data-sub="Sunshower Confession · preview 1:00">
+                            <span class="num">02</span>
+                            <span><strong>맑은 하늘 너와 빗물</strong><small>Sunshower Confession · preview 1:00</small></span>
+                            <span class="open">Play</span>
+                          </button>
+                          <button type="button" class="track" role="listitem" data-src="audio/gyd_03_login.mp3" data-title="너에게 로그인" data-sub="Login To You · preview 1:00">
+                            <span class="num">03</span>
+                            <span><strong>너에게 로그인</strong><small>Login To You · preview 1:00</small></span>
+                            <span class="open">Play</span>
+                          </button>
+                          <button type="button" class="track" role="listitem" data-src="audio/gyd_04_no-more-hello.mp3" data-title="안녕은 없어" data-sub="No More Hello · preview 1:00">
+                            <span class="num">04</span>
+                            <span><strong>안녕은 없어</strong><small>No More Hello · preview 1:00</small></span>
+                            <span class="open">Play</span>
+                          </button>
+                          <button type="button" class="track" role="listitem" data-src="audio/gyd_05_edge-of-us.mp3" data-title="우리라는 선의 끝" data-sub="The Edge of Us · preview 1:00">
+                            <span class="num">05</span>
+                            <span><strong>우리라는 선의 끝</strong><small>The Edge of Us · preview 1:00</small></span>
+                            <span class="open">Play</span>
+                          </button>
+                        </div>
+
+                        <a class="spotify-link" href="https://open.spotify.com/album/1jhLNO6mz8x4n75y2yi8Be" target="_blank" rel="noopener">Full album on Spotify ↗</a>
+                      </div>
+                    </div>
+
+        <div class="albums reveal">
+                  <a class="album" href="https://open.spotify.com/album/1jhLNO6mz8x4n75y2yi8Be" target="_blank" rel="noopener">
+                    <div class="art"><img src="assets/cover-gyd.webp" alt="Get your dream — 20260414_08 LIA Get your dream"></div>
+                    <div class="meta"><b>Get your dream</b><span>2026 · Album 08</span></div>
+                  </a>
+                  <a class="album" href="https://open.spotify.com/album/5sFUvcioVxHcUo0g5xloLP" target="_blank" rel="noopener">
+                    <div class="art"><img src="assets/cover-rebloom.webp" alt="Re:Bloom"></div>
+                    <div class="meta"><b>Re:Bloom</b><span>2026 · Album</span></div>
+                  </a>
+                  <a class="album" href="https://open.spotify.com/album/3lX8R4qh60xco6kmu65Mfn" target="_blank" rel="noopener">
+                    <div class="art"><img src="assets/cover-silver.webp" alt="Silver Horizon — 20260221_LIA-Silver Horizon"></div>
+                    <div class="meta"><b>Silver Horizon</b><span>2026 · Album</span></div>
+                  </a>
+                  <a class="album" href="https://open.spotify.com/album/0y2w4fS9eKWU3rhkn1gz4M" target="_blank" rel="noopener">
+                    <div class="art"><img src="assets/cover-endless.webp" alt="Endless Dream March — 20260412_07"></div>
+                    <div class="meta"><b>Endless Dream March</b><span>2026 · Album 07</span></div>
+                  </a>
+                  <a class="album" href="https://open.spotify.com/album/2T05oOG8U0lFNKVAtVlwVB" target="_blank" rel="noopener">
+                    <div class="art"><img src="assets/cover-sun.webp" alt="Sunlight Dreams — 20260404_Sunlite Dreams"></div>
+                    <div class="meta"><b>Sunlight Dreams</b><span>2026 · Album</span></div>
+                  </a>
+                </div>
+
+                <div class="bg-playlist reveal">
+                  <div class="pl-head">
+                    <h3>Site playlist</h3>
+                    <span>1-minute previews · fade-out · not full tracks</span>
+                  </div>
+                  <div id="playlist"></div>
+                </div>
+              </div>
+            </section>
+
+    <section class="visual" id="visual">
+      <div class="head reveal">
+        <div class="kicker">03 · Visual diary · GYD v7</div>
+        <h2>Every frame keeps<br>a piece of <i>her story.</i></h2>
+        <p class="lead">Frames from her world — silver hair, soft light, cinematic stillness. A diary of moods between songs.</p>
+      </div>
+      <div class="masonry">
+              <figure class="shot wide"><img src="assets/vd01.webp" alt="All day Music Cover 2 — LIALIA Korea"><figcaption>All day Music Cover 2</figcaption></figure>
+              <figure class="shot tall"><img src="assets/vd03.webp" alt="concept 03"><figcaption>Soft chrome</figcaption></figure>
+              <figure class="shot wide"><img src="assets/vd04.webp" alt="Silver jewelry editorial"><figcaption>Gold &amp; silver hush</figcaption></figure>
+              <figure class="shot tall"><img src="assets/vd05.webp" alt="concept 05"><figcaption>Blue hour</figcaption></figure>
+              <figure class="shot tall"><img src="assets/vd06.webp" alt="concept 06"><figcaption>Daylight cut</figcaption></figure>
+              <figure class="shot tall"><img src="assets/vd07.webp" alt="concept 07"><figcaption>Stillness</figcaption></figure>
+              <figure class="shot tall"><img src="assets/vd08.webp" alt="concept 08"><figcaption>Glass quiet</figcaption></figure>
+              <figure class="shot wide"><img src="assets/vd11.webp" alt="concept 11"><figcaption>Horizon line</figcaption></figure>
+              <figure class="shot wide"><img src="assets/vd09.webp" alt="Blue sequin pose"><figcaption>Ice blue pose</figcaption></figure>
+              <figure class="shot tall"><img src="assets/vd10.webp" alt="concept 10"><figcaption>Mirror frame</figcaption></figure>
+              <figure class="shot tall"><img src="assets/vd12.webp" alt="concept 12"><figcaption>Editorial still</figcaption></figure>
+              <figure class="shot wide"><img src="assets/vd13.webp" alt="concept 13"><figcaption>Stage breath</figcaption></figure>
+              <figure class="shot wide"><img src="assets/vd14.webp" alt="concept 14"><figcaption>Mood keep</figcaption></figure>
+            </div>
+    </section>
+
+    <section class="quote">
+      <div class="reveal">
+        <p>Don’t forget.<br><i>Get your dream.</i></p>
+        <small>LIALIA · Music for your unwritten scene</small>
+      </div>
+    </section>
+
+    <section class="connect" id="connect">
+      <div class="wrap">
+        <div class="connect-grid reveal">
+          <div>
+            <div class="kicker">04 · Connect</div>
+            <h2>Meet<br>LIA.</h2>
+            <p class="lead" style="margin-top:18px">YouTube · Instagram · TikTok · Spotify · Apple Music</p>
+          </div>
+          <div class="socials">
+            <a class="social" href="https://www.youtube.com/@LIALIACUTE7" target="_blank" rel="noopener"><b>YouTube</b><span>@LIALIACUTE7 ↗</span></a>
+            <a class="social" href="https://www.instagram.com/lialiacute/" target="_blank" rel="noopener"><b>Instagram</b><span>@lialiacute ↗</span></a>
+            <a class="social" href="https://www.tiktok.com/@lialiacute7" target="_blank" rel="noopener"><b>TikTok</b><span>@lialiacute7 ↗</span></a>
+            <a class="social" href="https://open.spotify.com/artist/6dA1aRmKkKNs4bi3eg28QI" target="_blank" rel="noopener"><b>Spotify</b><span>Artist page ↗</span></a>
+            <a class="social" href="https://music.apple.com/us/artist/lialia/1855916999" target="_blank" rel="noopener"><b>Apple Music</b><span>Listen ↗</span></a>
+          </div>
+        </div>
+        <div class="foot-note">
+          <span>© LIALIA · Virtual artist project</span>
+          <span>Visual · Get your dream era · base 2026</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('in'); });
+      }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
+      document.querySelectorAll('.reveal').forEach((el) => {
+        const r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight * 0.92 && r.bottom > 40) el.classList.add('in');
+        io.observe(el);
+      });
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          document.querySelectorAll('.reveal:not(.in)').forEach((el) => {
+            const r = el.getBoundingClientRect();
+            if (r.top < window.innerHeight * 1.2) el.classList.add('in');
+          });
+        }, 120);
+      });
+
+      /* —— 1-min preview players (fade-out baked in MP3) —— */
+            const SITE_TRACKS = [
+              { src: 'audio/04_still-that-day-acoustic.mp3', title: '여전히 그날에 (Acoustic)', sub: 'guitar only · preview 1:00' },
+              { src: 'audio/01_still-that-day.mp3', title: '여전히 그날에 · Still That Day', sub: 'LIALIA · preview 1:00' },
+              { src: 'audio/02_center.mp3', title: '중점 · Center', sub: 'Endless Dream March · preview 1:00' },
+              { src: 'audio/03_get-your-dream.mp3', title: '꿈의 조각을 잡고서 · Get your dream', sub: 'Album 08 · preview 1:00' },
+            ];
+            const GYD_TRACKS = [
+              { src: 'audio/gyd_01_get-your-dream.mp3', title: '꿈의 조각을 잡고서', sub: 'Get your dream · preview 1:00' },
+              { src: 'audio/gyd_02_sunshower.mp3', title: '맑은 하늘 너와 빗물', sub: 'Sunshower Confession · preview 1:00' },
+              { src: 'audio/gyd_03_login.mp3', title: '너에게 로그인', sub: 'Login To You · preview 1:00' },
+              { src: 'audio/gyd_04_no-more-hello.mp3', title: '안녕은 없어', sub: 'No More Hello · preview 1:00' },
+              { src: 'audio/gyd_05_edge-of-us.mp3', title: '우리라는 선의 끝', sub: 'The Edge of Us · preview 1:00' },
+            ];
+            let queue = SITE_TRACKS;
+            let mode = 'site'; // 'site' | 'gyd'
+            const audio = document.getElementById('bgAudio');
+            const btnPlay = document.getElementById('btnPlay');
+            const btnPrev = document.getElementById('btnPrev');
+            const btnNext = document.getElementById('btnNext');
+            const nowTitle = document.getElementById('nowTitle');
+            const nowSub = document.getElementById('nowSub');
+            const progBar = document.getElementById('progBar');
+            const gate = document.getElementById('playGate');
+            const gatePlay = document.getElementById('gatePlay');
+            const plRoot = document.getElementById('playlist');
+            const gydRoot = document.getElementById('gydTracks');
+            let idx = 0;
+            let wantPlay = true;
+
+            function renderList() {
+              if (plRoot) {
+                plRoot.innerHTML = SITE_TRACKS.map((t, i) => `
+                  <div class="pl-item${mode === 'site' && i === idx ? ' active' : ''}" data-i="${i}" role="button" tabindex="0">
+                    <span class="n">${String(i + 1).padStart(2, '0')}</span>
+                    <span><b>${t.title}</b><small>${t.sub}</small></span>
+                    <span class="tag">${mode === 'site' && i === idx && !audio.paused ? 'Now' : '1:00'}</span>
+                  </div>`).join('');
+                plRoot.querySelectorAll('.pl-item').forEach((el) => {
+                  el.addEventListener('click', () => {
+                    queue = SITE_TRACKS; mode = 'site';
+                    load(Number(el.dataset.i), true);
+                  });
+                  el.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      queue = SITE_TRACKS; mode = 'site';
+                      load(Number(el.dataset.i), true);
+                    }
+                  });
+                });
+              }
+              if (gydRoot) {
+                gydRoot.querySelectorAll('.track').forEach((el, i) => {
+                  const on = mode === 'gyd' && i === idx && !audio.paused;
+                  el.classList.toggle('active', mode === 'gyd' && i === idx);
+                  const tag = el.querySelector('.open');
+                  if (tag) tag.textContent = on ? 'Now' : '1:00';
+                });
+              }
+            }
+
+            function load(i, auto = true) {
+              idx = (i + queue.length) % queue.length;
+              const t = queue[idx];
+              audio.src = t.src;
+              nowTitle.textContent = t.title;
+              nowSub.textContent = t.sub;
+              renderList();
+              if (auto) play();
+            }
+
+            function play() {
+              wantPlay = true;
+              const p = audio.play();
+              if (p && p.then) {
+                p.then(() => {
+                  gate.classList.remove('show');
+                  gate.setAttribute('aria-hidden', 'true');
+                  btnPlay.textContent = '❚❚';
+                  renderList();
+                }).catch(() => {
+                  gate.classList.add('show');
+                  gate.setAttribute('aria-hidden', 'false');
+                  btnPlay.textContent = '▶';
+                });
+              }
+            }
+
+            function pause() {
+              wantPlay = false;
+              audio.pause();
+              btnPlay.textContent = '▶';
+              renderList();
+            }
+
+            btnPlay.addEventListener('click', () => (audio.paused ? play() : pause()));
+            btnPrev.addEventListener('click', () => load(idx - 1, true));
+            btnNext.addEventListener('click', () => load(idx + 1, true));
+            gatePlay.addEventListener('click', () => play());
+            audio.addEventListener('ended', () => load(idx + 1, true));
+            audio.addEventListener('timeupdate', () => {
+              const d = audio.duration || 60;
+              progBar.style.width = `${Math.min(100, (audio.currentTime / d) * 100)}%`;
+            });
+            audio.addEventListener('pause', () => renderList());
+            audio.addEventListener('play', () => renderList());
+
+            if (gydRoot) {
+              gydRoot.querySelectorAll('.track').forEach((el, i) => {
+                el.addEventListener('click', () => {
+                  queue = GYD_TRACKS;
+                  mode = 'gyd';
+                  load(i, true);
+                });
+              });
+            }
+
+            // first user gesture unlock (scroll/click/key) if autoplay blocked
+            const unlock = () => {
+              if (wantPlay && audio.paused) play();
+            };
+            ['pointerdown', 'keydown', 'touchstart'].forEach((ev) => {
+              window.addEventListener(ev, unlock, { once: true, passive: true });
+            });
+
+            queue = SITE_TRACKS;
+            mode = 'site';
+            load(0, false);
+            const tryAuto = () => { if (wantPlay) play(); };
+            if (audio.readyState >= 2) tryAuto();
+            else audio.addEventListener('canplay', tryAuto, { once: true });
+            window.addEventListener('load', tryAuto);
+          </script>
+        </body>
+        </html>
