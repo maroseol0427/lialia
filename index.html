@@ -45,8 +45,114 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{o
 @media(prefers-reduced-transparency:reduce){.nav,.player-dock{background:#242529;backdrop-filter:none;-webkit-backdrop-filter:none}}
 @media(prefers-contrast:more){:root{--muted:#d4d4dd}.music,.visual{--muted:#45454b}.nav,.player-dock{background:#18191d;border:1px solid #eee}.track small,.pl-item small,.album .meta span{color:#444}.navlinks a{color:#fff}}
 @media print{.nav,.player-dock{display:none}.hero{height:650px;min-height:650px}.reveal{opacity:1}section{break-inside:avoid}body{background:#fff}}
+/* LIA · lavender editorial palette */
+:root{--bg:#1c1626;--panel:#2a2035;--ink:#faf7ff;--muted:#c8bfd5;--silver:#e0d5ec;--accent:#ddc9f4;--coral:#edcddd;--line:rgba(222,202,241,.17)}
+body{background:#eee7f5}
+::selection{background:#dfc9f1;color:#35263f}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline-color:#9869c0}
+.nav{background:rgba(248,244,252,.93);color:#392947;border-color:rgba(119,85,146,.16);box-shadow:0 8px 30px rgba(52,29,71,.09)}
+.navlinks a{color:#6d597c;min-height:44px}
+.navlinks a[aria-current]{background:#e8d9f4;color:#4d3067}
+.nav-cta{background:#65417d;color:#fff;min-height:44px}
+.menu-toggle{color:#493554}
+.about,.music,.visual{--ink:#33263e;--muted:#776782;--silver:#695775;--accent:#784a98;--coral:#a66888;--line:rgba(105,72,130,.16);color:var(--ink)}
+.about{background:linear-gradient(135deg,#f9f5fc 0%,#eee5f7 62%,#f4e9f0 100%)}
+.about .kicker,.visual .kicker,.music .kicker{color:#775284}
+.about h2 i{color:#8c6aa0}
+.about-quote em{color:#85569d}
+.about-copy{color:#6c5b76}
+.about-copy .tagline{color:#896099}
+.about-copy b,.about-side h3,.style-list b{color:#493257}
+.chip{background:rgba(255,255,255,.5);border-color:#d9c9e6;color:#765489;font-size:.67rem;padding:7px 12px}
+.style-list li{color:#776580}
+.about-media{background:#e9def0;aspect-ratio:1649/2048;border:8px solid rgba(255,255,255,.62);box-shadow:0 24px 66px rgba(92,61,119,.12);border-radius:180px 180px 28px 28px}
+.about-media img{height:auto;aspect-ratio:1649/2048;object-fit:contain;object-position:center}
+.about-photo-note{margin-top:16px;font-size:.61rem;letter-spacing:.14em;text-align:center;text-transform:uppercase;color:#8b6f9b}
+.films{background:#21192c;--line:rgba(215,192,234,.18)}
+.mv-card{background:#2d2339;box-shadow:0 0 0 1px rgba(218,191,237,.12)}
+.films .kicker,.ep,.films-story .label{color:#d9bfe9}
+.films h2 i{color:#c7acd9}
+.mv-body p,.films-story p,.films-intro .lead{color:#c6b9cf}
+.mv-link{color:#eee0f5}
+.mv-strip .cell{background:#392c44}
+.music{background:#f6f0fa}
+.music h2 i{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:500;color:#916da4;font-size:1.08em;letter-spacing:-.04em}
+.feature{background:#fffcff;border:1px solid #e7dced;box-shadow:0 12px 42px rgba(89,55,111,.04)}
+.latest-release{background:linear-gradient(125deg,#e9ddf7 0%,#f0e5f3 50%,#f8e8ef 100%);border-color:#e0cde9;padding:52px;gap:60px}
+.latest-release h3{color:#4a305c;font-weight:550}
+.badge{color:#755282;font-size:.68rem;letter-spacing:.12em}
+.release-artist{color:#81688e}
+.release-listen{background:#6c4586;color:#fff;box-shadow:0 8px 20px rgba(89,54,116,.13)}
+.release-cover{box-shadow:0 20px 46px rgba(84,52,101,.17);border:6px solid rgba(255,255,255,.55);border-radius:20px}
+.release-cover img{border-radius:14px}
+.echo-story{margin-top:24px;display:grid;grid-template-columns:1.15fr .7fr 1fr;gap:16px;align-items:center}
+.echo-story figure{margin:0;overflow:hidden;border-radius:20px;background:#e9dff2}
+.echo-story img{height:auto;width:100%;object-fit:contain}
+.echo-story figure:nth-child(2){margin:28px 0}
+.echo-story figcaption{padding:12px 16px;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:#785e86;background:#ede2f3}
+.feature .desc,.track small,.album .meta span,.pl-item small,.pl-head span{color:#786980}
+.track .num,.pl-item .n{color:#947ca2}
+.track .open,.spotify-link{color:#805194}
+.track.active,.pl-item.active{background:#eadcf4}
+.track.active .num,.track.active strong{color:#6a3b87}
+.track,.pl-item{transition:background-color 160ms ease}
+.pl-item .tag{background:#efe5f6;color:#805b94}
+.pl-item.active .tag{background:#dcc3ed;color:#5f327c}
+.album .art{border:5px solid #fffafd;box-shadow:0 10px 24px rgba(91,58,111,.08);border-radius:22px}
+.album .meta{padding:17px 5px}
+.album .meta b{font-size:.93rem;line-height:1.45;color:#513861}
+.album .meta span{font-size:.69rem}
+.bg-playlist{background:#fffcff;border:1px solid #e8dced;padding:30px}
+#playlist{scrollbar-color:#cebadb transparent}
+.visual{background:linear-gradient(180deg,#f6f0fa,#eee4f6);padding-top:20px}
+.visual .head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px}
+.visual .head .lead{max-width:370px;margin:0}
+.visual h2 i{color:#956dac}
+.visual-feature{width:min(var(--max),calc(100% - 96px));margin:0 auto 36px;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+.visual-feature .shot{margin:0;border:7px solid #fffbff;background:#fffbff;border-radius:24px;box-shadow:0 16px 36px rgba(85,55,106,.08)}
+.visual-feature .shot:nth-child(2){margin-top:70px}
+.visual-feature .shot img{aspect-ratio:auto;height:auto;object-fit:contain}
+.visual-feature .shot figcaption{position:static;background:#fffbff;color:#745285;padding:17px 12px 10px;font-size:.7rem;letter-spacing:.1em}
+.masonry{columns:3;column-gap:20px}
+.shot{background:#e3d4ed;border-radius:20px}
+.shot figcaption{background:linear-gradient(transparent,rgba(45,27,58,.79));font-size:.65rem;pointer-events:none}
+.shot.new-photo img{height:auto;aspect-ratio:auto;object-fit:contain}
+.photo-open{display:block;width:100%;padding:0;line-height:0;border-radius:inherit;cursor:zoom-in;overflow:hidden}
+.photo-open:focus-visible{outline-offset:-5px;outline:3px solid #6d4288}
+.photo-open:focus-visible img{opacity:.85}
+.gallery-note{font-size:.73rem;letter-spacing:.02em;color:#886b98;margin-top:16px}
+.quote{background:linear-gradient(110deg,#dfc9f0,#e9d6ec 55%,#efdce9);color:#553669}
+.quote p i{color:#8e5d9e}
+.quote small{color:#856b91}
+.connect{background:#231a2f;color:#f6edfc}
+.connect .kicker{color:#d9bce9}
+.connect h2 i{color:#d8b8ea}
+.connect .lead,.social span{color:#c3afd0}
+.social{min-height:70px;border-color:#44334f}
+.social b{font-size:1.08rem}
+.foot-note{border-color:#44334f;color:#aa93b9}
+.player-dock{background:rgba(51,35,65,.95);border-color:rgba(220,190,239,.36);box-shadow:0 10px 40px rgba(62,34,83,.2)}
+.player-dock button.icon{background:#e9d3fa;color:#4f2a66}
+.player-dock .label{color:#dfbfef}
+.player-dock small,.time{color:#cebbdb}
+.seek,.volume input{accent-color:#dab5f0}
+.lightbox{position:fixed;inset:0;margin:auto;border:1px solid #6a4d7e;border-radius:24px;background:#22172e;color:#f9efff;width:min(1100px,calc(100% - 32px));max-height:calc(100dvh - 32px);padding:56px 20px 16px;box-shadow:0 30px 100px #160b2d80}
+.lightbox::backdrop{background:rgba(28,16,39,.88);backdrop-filter:blur(10px)}
+.lightbox img{display:block;max-height:calc(100dvh - 170px);height:auto;width:auto;max-width:100%;object-fit:contain;margin:auto;border-radius:8px}
+.lightbox-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-top:14px}
+.lightbox-bar p{font-size:.8rem;color:#decaeb;flex:1;text-align:center}
+.lightbox button{min-width:44px;min-height:44px;border:1px solid #705582;border-radius:50%;color:#efdcfc}
+.lightbox-close{position:absolute;top:8px;right:14px;font-size:1.4rem}
+.lightbox button:hover{background:#49315c}
+@media(hover:hover) and (pointer:fine){.navlinks a:hover{background:#ecdef7;color:#603e77}.nav-cta:hover,.release-listen:hover{background:#80559b;color:#fff}.track:hover,.pl-item:hover{background:#f1e8f8}.social:hover{color:#e2b4f3}}
+@media(max-width:1000px){.visual-feature{width:calc(100% - 64px)}.latest-release{padding:32px;gap:36px}.echo-story{gap:12px}}
+@media(max-width:760px){.navlinks{background:#f9f3fe;border-color:#d9c4e7}.about-media{width:min(100%,420px);margin:auto;border-width:6px;aspect-ratio:1649/2048}.about{padding:80px 0}.latest-release{padding:24px;gap:28px}.latest-release h3{font-size:clamp(2.2rem,9vw,3rem)}.release-cover{max-width:420px;margin:auto}.echo-story{grid-template-columns:1fr 1fr;gap:12px}.echo-story figure:nth-child(2){margin:0}.echo-story figure:first-child{grid-column:1/-1}.echo-story figcaption{padding:10px;font-size:.58rem}.visual .head{display:block}.visual .head .lead{margin-top:22px}.visual-feature{width:calc(100% - 40px);gap:14px}.visual-feature .shot{border-width:4px;border-radius:16px}.visual-feature .shot:nth-child(2){margin-top:34px}.visual-feature .shot figcaption{font-size:.57rem;padding:12px 5px 8px;letter-spacing:.04em}.masonry{columns:2;column-gap:12px}.bg-playlist{padding:20px 14px}.album .meta b{font-size:.83rem}.lightbox{padding:56px 12px 12px;border-radius:18px}.lightbox-bar p{font-size:.7rem}}
+@media(max-width:380px){.visual-feature{grid-template-columns:1fr}.visual-feature .shot:nth-child(2){margin-top:0}.masonry{columns:1}.latest-release{padding:20px}}
+@media(prefers-reduced-transparency:reduce){.nav{background:#faf5fe}.player-dock{background:#332341}.lightbox::backdrop{background:#20132c;backdrop-filter:none}}
+@media(prefers-contrast:more){.about,.music,.visual{--muted:#503a62;--line:#8b6b9f}.about-copy,.style-list li,.album .meta span,.feature .desc,.track small,.pl-item small{color:#523963}.nav{background:#fff;border-color:#65417d}.navlinks a{color:#493554}.navlinks a[aria-current]{background:#e8d9f4;color:#382247}}
+
 </style>
-<meta content="#101113" name="theme-color"/><link href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2716%27 fill=%27%23101113%27/%3E%3Cpath d=%27M20 15h8v32h18v7H20z%27 fill=%27%23c8ddec%27/%3E%3C/svg%3E" rel="icon" type="image/svg+xml"/></head>
+<meta content="#eee7f5" name="theme-color"/><link href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2716%27 fill=%27%235b3d70%27/%3E%3Cpath d=%27M20 15h8v32h18v7H20z%27 fill=%27%23ead5f5%27/%3E%3C/svg%3E" rel="icon" type="image/svg+xml"/></head>
 <body class=""><a class="skip-link" href="#main">본문으로 건너뛰기</a>
 
 
@@ -54,7 +160,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{o
 <div class="meta"><div class="label" id="dockLabel">PRESS PLAY · LIALIA</div><strong id="nowTitle">너는 어디에 · Where You Are</strong><small id="nowSub">Acoustic guitar · full</small></div>
 <div class="side"><button aria-label="이전 곡" class="ghost-btn" id="btnPrev" type="button">‹</button><button aria-label="다음 곡" class="ghost-btn" id="btnNext" type="button">›</button><label class="volume"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24"><path d="M11 5 6 9H3v6h3l5 4zM15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"></path></svg><span class="sr-only">음량</span><input id="volume" max="1" min="0" step="0.01" type="range" value="0.7"/></label></div>
 <div class="player-timeline"><span class="time" id="elapsed">0:00</span><label class="sr-only" for="seek">재생 위치</label><input class="seek" disabled="" id="seek" max="1000" min="0" step="1" type="range" value="0"/><span class="time" id="duration">—:—</span></div><p class="player-error" id="playerError" role="status"></p></div>
-<audio id="bgAudio" playsinline="" preload="metadata"></audio>
+<audio id="bgAudio" playsinline="" preload="auto"></audio>
 <header class="nav">
 <a class="logo" href="#top">LIALIA</a>
 <button aria-controls="mainNav" aria-expanded="false" class="menu-toggle" id="menuToggle" type="button">메뉴</button><nav aria-label="주요 메뉴" class="navlinks" id="mainNav">
@@ -84,7 +190,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{o
 <section class="about" id="about">
 <div class="about-stage">
 <div class="about-media">
-<img alt="LIA editorial portrait — Contemporary Korean fashion" decoding="async" height="1227" loading="lazy" src="assets/about-hero.webp" width="2200"/>
+<img alt="LIA — 은빛 머리와 핑크빛 날개의 포트레이트" decoding="async" loading="lazy" src="assets/lia-angel-portrait.webp" width="1449" height="1800"/>
 </div>
 <div class="about-inner">
 <div class="reveal">
@@ -192,6 +298,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{o
 <a class="release-listen" href="https://open.spotify.com/album/1l33xTmmleVEe4GV9WsmgD" rel="noopener" target="_blank">Spotify에서 듣기 <span aria-hidden="true">↗</span></a>
 </div>
 </article>
+<div class="echo-story" aria-label="Echo of the Wind 화보">
+<figure class="echo-photo"><img alt="핑크빛 자동차 위, 날개를 펼친 LIA" decoding="async" loading="lazy" src="assets/lia-angel-kneeling.webp" width="1600" height="1288"/><figcaption>Echo of the Wind · a quiet afternoon</figcaption></figure>
+<figure class="echo-photo"><img alt="자동차 위에 앉아 고개를 기울인 LIA" decoding="async" loading="lazy" src="assets/lia-angel-crouching.webp" width="1005" height="1800"/><figcaption>Soft light</figcaption></figure>
+<figure class="echo-photo"><img alt="맑은 하늘 아래, 날개 너머로 돌아보는 LIA" decoding="async" loading="lazy" src="assets/lia-angel-wings.webp" width="1449" height="1800"/><figcaption>A little closer to the sky</figcaption></figure>
+</div>
 <div class="feature reveal">
 <div class="cover-stack">
 <div class="main"><img alt="LIALIA Light Rock — Album 08 portrait cover" decoding="async" height="1376" loading="lazy" src="assets/gyd-cover.webp" width="768"/></div>
@@ -267,29 +378,38 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{o
 </section>
 <section class="visual" id="visual">
 <div class="head reveal">
-<div class="kicker">04 · Visual diary</div>
-<h2>노래 사이에<br/><i>남겨진 장면들.</i></h2>
-<p class="lead">무대 위의 빛, 고요한 시선, 일상의 작은 순간. LIA의 또 다른 이야기를 담았습니다.</p>
+<div><div class="kicker">04 · Visual diary</div>
+<h2>LIA의 순간들.<br/><i>Somewhere in a dream.</i></h2></div>
+<div><p class="lead">바람이 스친 오후부터 무대 밖의 표정까지.<br/>음악 사이에 머무는 LIA의 장면들.</p><p class="gallery-note">사진을 누르면 크게 볼 수 있어요.</p></div>
+</div>
+<div class="visual-feature">
+<figure class="shot new-photo"><button class="photo-open" type="button" aria-label="사진 크게 보기"><img alt="핑크빛 자동차 위에서 하늘을 향해 손을 뻗은 LIA" decoding="async" loading="lazy" src="assets/lia-angel-reaching.webp" width="1600" height="1288"/></button><figcaption>01 / Reach for the sky</figcaption></figure>
+<figure class="shot new-photo"><button class="photo-open" type="button" aria-label="사진 크게 보기"><img alt="날개를 펼치고 자동차 위에 앉은 LIA" decoding="async" loading="lazy" src="assets/lia-angel-roadtrip.webp" width="1600" height="1288"/></button><figcaption>02 / A day in the clouds</figcaption></figure>
 </div>
 <div class="masonry">
-<figure class="shot tall"><img alt="Ethereal wind-swept lace portrait — hand on" decoding="async" height="1600" loading="lazy" src="assets/vd16.webp" width="893"/><figcaption>Ethereal lace · hand</figcaption></figure>
-<figure class="shot tall"><img alt="Ethereal wind-swept lace portrait — high angle" decoding="async" height="1600" loading="lazy" src="assets/vd17.webp" width="893"/><figcaption>Ethereal lace · high</figcaption></figure>
-<figure class="shot tall"><img alt="Ethereal wind-swept lace portrait — leaning" decoding="async" height="1600" loading="lazy" src="assets/vd18.webp" width="893"/><figcaption>Ethereal lace · lean</figcaption></figure>
-<figure class="shot tall"><img alt="Ethereal wind-swept lace portrait — cinematic" decoding="async" height="1600" loading="lazy" src="assets/vd19.webp" width="893"/><figcaption>Ethereal lace · cinema</figcaption></figure>
-<figure class="shot tall"><img alt="Ethereal wind-swept lace portrait — wind" decoding="async" height="1600" loading="lazy" src="assets/vd20.webp" width="893"/><figcaption>Ethereal lace · wind</figcaption></figure>
-<figure class="shot wide"><img alt="LIA — Get Your Dream cinematic still" decoding="async" height="1125" loading="lazy" src="assets/vd15.webp" width="2000"/><figcaption>Get your dream · still</figcaption></figure>
-<figure class="shot wide"><img alt="All day Music Cover 2 — LIALIA Korea" decoding="async" height="768" loading="lazy" src="assets/vd01.webp" width="1376"/><figcaption>All day Music Cover 2</figcaption></figure>
-<figure class="shot tall"><img alt="concept 03" decoding="async" height="1376" loading="lazy" src="assets/vd03.webp" width="768"/><figcaption>Soft chrome</figcaption></figure>
-<figure class="shot wide"><img alt="Silver jewelry editorial" decoding="async" height="768" loading="lazy" src="assets/vd04.webp" width="1376"/><figcaption>Gold &amp; silver hush</figcaption></figure>
-<figure class="shot tall"><img alt="concept 05" decoding="async" height="1200" loading="lazy" src="assets/vd02.webp" width="896"/><figcaption>Summer afternoon</figcaption></figure>
-<figure class="shot wide"><img alt="concept 07" decoding="async" height="669" loading="lazy" src="assets/g7.webp" width="1200"/><figcaption>Rooftop stillness</figcaption></figure>
-<figure class="shot tall"><img alt="concept 08" decoding="async" height="1376" loading="lazy" src="assets/vd08.webp" width="768"/><figcaption>Glass quiet</figcaption></figure>
-<figure class="shot wide"><img alt="concept 11" decoding="async" height="768" loading="lazy" src="assets/vd11.webp" width="1376"/><figcaption>Horizon line</figcaption></figure>
-<figure class="shot wide"><img alt="Blue sequin pose" decoding="async" height="768" loading="lazy" src="assets/vd09.webp" width="1376"/><figcaption>Ice blue pose</figcaption></figure>
-<figure class="shot tall"><img alt="concept 10" decoding="async" height="1376" loading="lazy" src="assets/vd10.webp" width="768"/><figcaption>Mirror frame</figcaption></figure>
-<figure class="shot tall"><img alt="concept 12" decoding="async" height="1376" loading="lazy" src="assets/vd12.webp" width="768"/><figcaption>Editorial still</figcaption></figure>
-<figure class="shot wide"><img alt="concept 13" decoding="async" height="768" loading="lazy" src="assets/vd13.webp" width="1376"/><figcaption>Stage breath</figcaption></figure>
-<figure class="shot wide"><img alt="concept 14" decoding="async" height="768" loading="lazy" src="assets/vd14.webp" width="1376"/><figcaption>Mood keep</figcaption></figure>
+<figure class="shot tall"><button class="photo-open" type="button" aria-label="사진 크게 보기"><img alt="Ethereal wind-swept lace portrait — hand on" decoding="async" height="1600" loading="lazy" src="assets/vd16.webp" width="893"/></button><figcaption>Ethereal lace · hand</figcaption></figure>
+<figure class="shot tall"><button class="photo-open" type="button" aria-label="사진 크게 보기"><img alt="Ethereal wind-swept lace portrait — high angle" decoding="async" height="1600" loading="lazy" src="assets/vd17.webp" width="893"/></button><figcaption>Ethereal lace · high</figcaption></figure>
+<figure class="shot tall"><button class="photo-open" type="button" aria-label="사진 크게 보기"><img alt="Ethereal wind-swept lace portrait — leaning" decoding="async" height="1600" loading="lazy" src="assets/vd18.webp" width="893"/></button><figcaption>Ethereal lace · lean</figcaption></figure>
+<figure class="shot tall"><button class="photo-open" type="button" aria-label="사진 크게 보기"><img alt="Ethereal wind-swept lace portrait — cinematic" decoding="async" height="1600" loading="lazy" src="assets/vd19.webp" width="893"/></button><figcaption>Ethereal lace · cinema</figcaption></figure>
+<figure class="shot tall"><button class="photo-open" type="button" aria-label="사진 크게 보기"><img alt="Ethereal wind-swept lace portrait — wind" decoding="async" height="1600" loading="lazy" src="assets/vd20.webp" width="893"/></button><figcaption>Ethereal lace · wind</figcaption></figure>
+<figure class="shot new-photo"><button class="photo-open" type="button" aria-label="사진 크게 보기"><img alt="파스텔 하늘 아래 자동차 위에서 쉬는 LIA" decoding="async" loading="lazy" src="assets/lia-angel-afternoon.webp" width="1600" height="1288"/></button><figcaption>Cloud nine</figcaption></figure>
+<figure class="shot new-photo"><button class="photo-open" type="button" aria-label="사진 크게 보기"><img alt="블랙 재킷과 은빛 머리의 LIA 스트리트 화보" decoding="async" loading="lazy" src="assets/lia-silver-street.webp" width="1600" height="1288"/></button><figcaption>Silver after dark</figcaption></figure>
+<figure class="shot new-photo"><button class="photo-open" type="button" aria-label="사진 크게 보기"><img alt="레드카펫에서 어깨 너머로 바라보는 LIA" decoding="async" loading="lazy" src="assets/lia-red-carpet.webp" width="1449" height="1800"/></button><figcaption>Before the lights</figcaption></figure>
+<figure class="shot new-photo"><button class="photo-open" type="button" aria-label="사진 크게 보기"><img alt="노을이 드리운 바닷가의 LIA" decoding="async" loading="lazy" src="assets/lia-seaside-evening.webp" width="1376" height="768"/></button><figcaption>A softer evening</figcaption></figure>
+<figure class="shot wide"><button class="photo-open" type="button" aria-label="사진 크게 보기"><img alt="LIA — 이전 소개 화보" decoding="async" height="1227" loading="lazy" src="assets/about-hero.webp" width="2200"/></button><figcaption>From the diary</figcaption></figure>
+<figure class="shot wide"><button class="photo-open" type="button" aria-label="사진 크게 보기"><img alt="LIA — Get Your Dream cinematic still" decoding="async" height="1125" loading="lazy" src="assets/vd15.webp" width="2000"/></button><figcaption>Get your dream · still</figcaption></figure>
+<figure class="shot wide"><button class="photo-open" type="button" aria-label="사진 크게 보기"><img alt="All day Music Cover 2 — LIALIA Korea" decoding="async" height="768" loading="lazy" src="assets/vd01.webp" width="1376"/></button><figcaption>All day Music Cover 2</figcaption></figure>
+<figure class="shot tall"><button class="photo-open" type="button" aria-label="사진 크게 보기"><img alt="concept 03" decoding="async" height="1376" loading="lazy" src="assets/vd03.webp" width="768"/></button><figcaption>Soft chrome</figcaption></figure>
+<figure class="shot wide"><button class="photo-open" type="button" aria-label="사진 크게 보기"><img alt="Silver jewelry editorial" decoding="async" height="768" loading="lazy" src="assets/vd04.webp" width="1376"/></button><figcaption>Gold &amp; silver hush</figcaption></figure>
+<figure class="shot tall"><button class="photo-open" type="button" aria-label="사진 크게 보기"><img alt="concept 05" decoding="async" height="1200" loading="lazy" src="assets/vd02.webp" width="896"/></button><figcaption>Summer afternoon</figcaption></figure>
+<figure class="shot wide"><button class="photo-open" type="button" aria-label="사진 크게 보기"><img alt="concept 07" decoding="async" height="669" loading="lazy" src="assets/g7.webp" width="1200"/></button><figcaption>Rooftop stillness</figcaption></figure>
+<figure class="shot tall"><button class="photo-open" type="button" aria-label="사진 크게 보기"><img alt="concept 08" decoding="async" height="1376" loading="lazy" src="assets/vd08.webp" width="768"/></button><figcaption>Glass quiet</figcaption></figure>
+<figure class="shot wide"><button class="photo-open" type="button" aria-label="사진 크게 보기"><img alt="concept 11" decoding="async" height="768" loading="lazy" src="assets/vd11.webp" width="1376"/></button><figcaption>Horizon line</figcaption></figure>
+<figure class="shot wide"><button class="photo-open" type="button" aria-label="사진 크게 보기"><img alt="Blue sequin pose" decoding="async" height="768" loading="lazy" src="assets/vd09.webp" width="1376"/></button><figcaption>Ice blue pose</figcaption></figure>
+<figure class="shot tall"><button class="photo-open" type="button" aria-label="사진 크게 보기"><img alt="concept 10" decoding="async" height="1376" loading="lazy" src="assets/vd10.webp" width="768"/></button><figcaption>Mirror frame</figcaption></figure>
+<figure class="shot tall"><button class="photo-open" type="button" aria-label="사진 크게 보기"><img alt="concept 12" decoding="async" height="1376" loading="lazy" src="assets/vd12.webp" width="768"/></button><figcaption>Editorial still</figcaption></figure>
+<figure class="shot wide"><button class="photo-open" type="button" aria-label="사진 크게 보기"><img alt="concept 13" decoding="async" height="768" loading="lazy" src="assets/vd13.webp" width="1376"/></button><figcaption>Stage breath</figcaption></figure>
+<figure class="shot wide"><button class="photo-open" type="button" aria-label="사진 크게 보기"><img alt="concept 14" decoding="async" height="768" loading="lazy" src="assets/vd14.webp" width="1376"/></button><figcaption>Mood keep</figcaption></figure>
 </div>
 </section>
 <section class="quote">
@@ -321,6 +441,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{o
 </div>
 </section>
 </main>
+<dialog class="lightbox" id="photoLightbox" aria-label="LIA 화보 크게 보기">
+<button class="lightbox-close" type="button" aria-label="사진 닫기">×</button>
+<img id="lightboxImage" alt=""/>
+<div class="lightbox-bar"><button type="button" id="photoPrevious" aria-label="이전 사진">←</button><p id="lightboxCaption" aria-live="polite"></p><button type="button" id="photoNext" aria-label="다음 사진">→</button></div>
+</dialog>
+
 <script>const SITE_TRACKS = [
               { src: 'audio/full_where-you-are-acoustic.mp3', title: '너는 어디에 · Where You Are', sub: 'Acoustic guitar · full', full: true },
               { src: 'audio/full_still-that-day-acoustic.mp3', title: '여전히 그날에 · Still That Day', sub: 'Acoustic guitar · full', full: true },
@@ -416,17 +542,44 @@ function updateTimeline(){
   duration.textContent = valid ? time(audio.duration) : '—:—';
   seek.setAttribute('aria-valuetext', `${time(audio.currentTime)} / ${valid ? time(audio.duration) : '재생 시간 확인 중'}`);
 }
+let unlockBound = false;
+function clearUnlock(){
+  if(!unlockBound) return;
+  unlockBound = false;
+  ['pointerdown','keydown','touchstart','click'].forEach(type => document.removeEventListener(type, unlockAudio, true));
+}
+function unlockAudio(){
+  clearUnlock();
+  if(audio.paused) play();
+}
+function armUnlock(message){
+  errorText.textContent = message;
+  document.getElementById('dockLabel').textContent = 'TAP ANYWHERE · MUSIC';
+  if(unlockBound) return;
+  unlockBound = true;
+  ['pointerdown','keydown','touchstart','click'].forEach(type => document.addEventListener(type, unlockAudio, {capture:true, once:false}));
+}
 async function play(){
   const currentRequest = ++requestId;
   errorText.textContent = '';
-  try { await audio.play(); if(currentRequest === requestId) renderState(); }
+  try {
+    await audio.play();
+    if(currentRequest === requestId){
+      clearUnlock();
+      renderState();
+    }
+  }
   catch(error){
     if(currentRequest !== requestId || error.name === 'AbortError') return;
-    errorText.textContent = error.name === 'NotAllowedError' ? '재생 버튼을 다시 눌러 음악을 시작해 주세요.' : '음원을 불러오지 못했어요. 다시 재생하거나 다음 곡을 선택해 주세요.';
+    if(error.name === 'NotAllowedError'){
+      armUnlock('브라우저가 자동재생을 막았어요. 화면을 한 번 탭하면 음악이 시작됩니다.');
+    } else {
+      errorText.textContent = '음원을 불러오지 못했어요. 다시 재생하거나 다음 곡을 선택해 주세요.';
+    }
     renderState();
   }
 }
-function pause(){ ++requestId; audio.pause(); renderState(); }
+function pause(){ ++requestId; audio.pause(); clearUnlock(); renderState(); }
 function load(i, auto = false){
   ++requestId;
   idx = (i + queue.length) % queue.length;
@@ -450,9 +603,14 @@ audio.addEventListener('ended', () => load(idx+1,true));
 ['timeupdate','loadedmetadata','durationchange','emptied'].forEach(event => audio.addEventListener(event, updateTimeline));
 ['play','pause','ended'].forEach(event => audio.addEventListener(event, renderState));
 audio.addEventListener('error', () => { errorText.textContent='음원을 불러오지 못했어요. 다시 재생하거나 다음 곡을 선택해 주세요.'; renderState(); });
-load(0,false);
+// 접속 시 사이트 플레이리스트 1곡부터 자동재생 시도 (브라우저 정책 시 첫 제스처로 해제)
+const preferQuiet = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+load(0, !preferQuiet);
+if(preferQuiet){
+  errorText.textContent = '접근성 설정으로 자동재생을 건너뛰었어요. 재생 버튼을 눌러 주세요.';
+}
 
-// Keyboard-friendly mobile navigation; no forced audio on unrelated gestures.
+// Keyboard-friendly mobile navigation.
 const menuButton = document.getElementById('menuToggle');
 const menu = document.getElementById('mainNav');
 function closeMenu(returnFocus=false){
@@ -479,6 +637,52 @@ if('IntersectionObserver' in window){
   document.querySelectorAll('section[id]').forEach(section=>observer.observe(section));
 }
 </script>
+
+<script>
+(() => {
+  const dialog = document.getElementById('photoLightbox');
+  const photos = [...document.querySelectorAll('#visual .photo-open')];
+  const image = document.getElementById('lightboxImage');
+  const caption = document.getElementById('lightboxCaption');
+  let current = 0, previousOverflow = '', opener = null;
+  function showPhoto(index) {
+    current = (index + photos.length) % photos.length;
+    const source = photos[current].querySelector('img');
+    image.src = source.currentSrc || source.src;
+    image.alt = source.alt;
+    const label = photos[current].closest('figure').querySelector('figcaption');
+    caption.textContent = `${current + 1} / ${photos.length} · ${label?.textContent || source.alt}`;
+  }
+  photos.forEach((button, index) => {
+    button.setAttribute('aria-label', `${button.querySelector('img').alt} — 크게 보기`);
+    button.addEventListener('click', () => {
+      opener = button;
+      previousOverflow = document.body.style.overflow;
+      showPhoto(index);
+      dialog.showModal();
+      document.body.style.overflow = 'hidden';
+      dialog.querySelector('.lightbox-close').focus();
+    });
+  });
+  dialog.querySelector('.lightbox-close').addEventListener('click', () => dialog.close());
+  document.getElementById('photoPrevious').addEventListener('click', () => showPhoto(current - 1));
+  document.getElementById('photoNext').addEventListener('click', () => showPhoto(current + 1));
+  dialog.addEventListener('keydown', event => {
+    if (event.key === 'ArrowLeft') { event.preventDefault(); showPhoto(current - 1); }
+    if (event.key === 'ArrowRight') { event.preventDefault(); showPhoto(current + 1); }
+  });
+  dialog.addEventListener('click', event => {
+    if (event.target !== dialog) return;
+    const r = dialog.getBoundingClientRect();
+    if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) dialog.close();
+  });
+  dialog.addEventListener('close', () => {
+    document.body.style.overflow = previousOverflow;
+    opener?.focus({preventScroll:true});
+  });
+})();
+</script>
 </body>
 </html>
+
 
