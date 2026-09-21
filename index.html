@@ -4,11 +4,11 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<meta content="LIALIA — AI 뮤직 채널. 울고 싶은 날, 가장 신나는 노래. K-Indie · Light Rock · Bright Sadness." name="description"/>
+<meta content="LIALIA — AI 뮤직 채널. 지치고 힘든 날, 가장 밝은 노래. K-Indie · Light Rock · Bright Sadness." name="description"/>
 <title>LIALIA — Music, Film &amp; Feeling</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;family=Noto+Serif+KR:wght@500&amp;display=swap" rel="stylesheet"/>
 <style>/* LIALIA artist page */
 :root{color-scheme:dark;--bg:#101113;--panel:#1b1c20;--ink:#f5f5f7;--muted:#b0b0b8;--silver:#d4d7dd;--accent:#bdd9ec;--coral:#b8d7e9;--line:rgba(255,255,255,.12);--max:1160px;--ease:cubic-bezier(.23,1,.32,1);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",sans-serif;font-size:16px}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -151,6 +151,43 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{o
 @media(prefers-reduced-transparency:reduce){.nav{background:#faf5fe}.player-dock{background:#332341}.lightbox::backdrop{background:#20132c;backdrop-filter:none}}
 @media(prefers-contrast:more){.about,.music,.visual{--muted:#503a62;--line:#8b6b9f}.about-copy,.style-list li,.album .meta span,.feature .desc,.track small,.pl-item small{color:#523963}.nav{background:#fff;border-color:#65417d}.navlinks a{color:#493554}.navlinks a[aria-current]{background:#e8d9f4;color:#382247}}
 
+/* LIA editorial typography: expressive titles, quiet and readable controls. */
+:root{--font-ui:"Noto Sans KR",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--font-display:"Cormorant Garamond","Noto Serif KR",Georgia,serif;--font-korean:"Noto Serif KR",Georgia,serif;font-family:var(--font-ui)}
+body{letter-spacing:-.018em}
+.logo{font-family:var(--font-display);font-size:1.35rem;font-weight:600;letter-spacing:.12em;line-height:1.2}
+.hero h1{font-family:var(--font-display);font-weight:500;letter-spacing:-.025em;line-height:1.04;margin-left:-.025em}
+.hero-tag{font-family:var(--font-korean);font-weight:500;letter-spacing:-.035em;line-height:1.8}
+.hero-tag small{font-family:var(--font-ui);font-weight:400;letter-spacing:.02em}
+.about h2,.films-intro h2,.music h2,.visual h2,.connect h2{font-family:var(--font-display);font-weight:500;letter-spacing:-.04em;line-height:1.42;word-break:keep-all;overflow-wrap:break-word}
+.about h2{font-size:clamp(1.8rem,3vw,2.65rem)}
+.films-intro h2{font-size:clamp(2rem,3.6vw,3.2rem)}
+.music h2,.visual h2{font-size:clamp(2rem,3.7vw,3.35rem)}
+.connect h2{font-size:clamp(1.85rem,3.6vw,3.2rem)}
+.music h2 i,.visual h2 i,.connect h2 i{font-family:var(--font-display);font-style:italic;font-weight:500;font-size:1.18em;letter-spacing:-.025em;line-height:1.15}
+.about-quote{font-family:var(--font-korean);font-weight:500;line-height:1.8;letter-spacing:-.04em}
+.feature h3,.latest-release h3{font-family:var(--font-display);font-weight:500;letter-spacing:-.035em;line-height:1.08}
+.mv-body h3{font-family:var(--font-korean);font-weight:500;letter-spacing:-.035em;line-height:1.55}
+.pl-head h3{font-family:var(--font-display);font-size:1.8rem;font-weight:600;letter-spacing:-.015em;line-height:1.2}
+.quote p,.quote p i{font-family:var(--font-display);font-weight:500;letter-spacing:-.03em;line-height:1.12}
+.kicker,.eyebrow,.badge,.ep{font-weight:500;letter-spacing:.16em}
+.navlinks a,.nav-cta,.btn,.release-listen,.spotify-link{font-weight:500;letter-spacing:.01em}
+.about-copy,.lead,.feature .desc,.mv-body p,.films-story p{line-height:1.95;letter-spacing:-.02em}
+.track strong,.pl-item b,.album .meta b,.player-dock strong{font-weight:500;letter-spacing:-.025em;line-height:1.6}
+.track small,.pl-item small,.album .meta span,.player-dock small{letter-spacing:0;line-height:1.6}
+.track .num,.pl-item .n,.time{font-variant-numeric:tabular-nums}
+.social b{font-family:var(--font-display);font-size:1.5rem;font-weight:600;letter-spacing:0}
+.echo-story figcaption,.visual-feature .shot figcaption{font-family:var(--font-display);font-size:1rem;font-weight:500;letter-spacing:.015em;line-height:1.4}
+@media(max-width:760px){
+  .logo{font-size:1.2rem}
+  .hero-tag{font-size:1.05rem}
+  .about h2{font-size:clamp(1.7rem,6.7vw,2.3rem)}
+  .films-intro h2,.music h2,.visual h2{font-size:clamp(1.85rem,7vw,2.75rem)}
+  .connect h2{font-size:clamp(1.65rem,6.6vw,2.65rem)}
+  .feature h3{font-size:clamp(2.7rem,10vw,3.4rem)}
+  .latest-release h3{font-size:clamp(2.5rem,10vw,3.4rem)}
+  .echo-story figcaption,.visual-feature .shot figcaption{font-size:.85rem}
+}
+
 </style>
 <meta content="#eee7f5" name="theme-color"/><link href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2716%27 fill=%27%235b3d70%27/%3E%3Cpath d=%27M20 15h8v32h18v7H20z%27 fill=%27%23ead5f5%27/%3E%3C/svg%3E" rel="icon" type="image/svg+xml"/></head>
 <body class=""><a class="skip-link" href="#main">본문으로 건너뛰기</a>
@@ -180,7 +217,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{o
 <div class="eyebrow">LIALIA · AI Music &amp; Film · Seoul</div>
 <h1>LIALIA<span style="color:#bcd8e9">.</span></h1>
 <div class="hero-row">
-<p class="hero-tag">울고 싶은 날,<br/>가장 신나는 노래.<small>K-Indie · Light Rock · Bright Sadness</small></p>
+<p class="hero-tag">지치고 힘든 날,<br/>가장 밝은 노래.<small>K-Indie · Light Rock · Bright Sadness</small></p>
 <div class="hero-actions"><button class="btn btn-primary" id="heroListen" type="button"><span aria-hidden="true">▶</span> 너는 어디에 듣기</button><a class="btn btn-ghost" href="#films">뮤직 필름 보기 <span aria-hidden="true">↗</span></a></div>
 </div>
 </div>
@@ -196,7 +233,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{o
 <div class="reveal">
 <div class="kicker">01 · About LIA</div>
 <h2>음악이 된 마음.<br/><i>이야기가 된 LIA.</i></h2>
-<p class="about-quote">“울고 싶은 날,<br/><em>가장 신나는 노래</em>”</p>
+<p class="about-quote">“지치고 힘든 날,<br/><em>가장 밝은 노래</em>”</p>
 <div class="about-copy">
 <p class="tagline">YouTube · @LIALIACUTE7</p>
 <p>AI 뮤직 채널 <b>LIALIA</b> 입니다.<br/>
@@ -234,7 +271,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{o
 <div class="films-pair">
 <article class="mv-card reveal">
 <div class="yt">
-<img alt="여전히 그날에 — music film still" class="yt-thumb" decoding="async" height="1012" loading="lazy" src="assets/mv_std_01.webp" width="1800"/>
+<img alt="여전히 그날에 — music film still" class="yt-thumb" decoding="async" height="897" loading="lazy" src="assets/mv_std_01.webp?v=3" width="1600"/>
 <div aria-hidden="true" class="yt-play"><span>▶</span></div>
 <a aria-label="여전히 그날에 유튜브에서 보기" class="yt-hit" href="https://youtu.be/BOgn50IJ5qc" rel="noopener" target="_blank"></a>
 </div>
