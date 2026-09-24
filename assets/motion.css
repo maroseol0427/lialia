@@ -1,0 +1,22 @@
+/* LIALIA: quiet, tactile interactions shared by the artist and beauty pages. */
+:root{--motion-ease:cubic-bezier(.22,.61,.36,1)}
+:is(.btn,.nav-cta,.release-listen,.menu-toggle,.navlinks a,.ghost-btn,.player-dock button.icon,.lightbox button,.beauty-dialog button,.filter-button,.beauty-button){transition:transform 240ms var(--motion-ease),box-shadow 240ms var(--motion-ease),background-color 200ms ease,color 200ms ease,opacity 200ms ease}
+:is(.menu-toggle,.filter-button){border-radius:999px}
+:is(.btn,.release-listen,.beauty-button) [aria-hidden]{display:inline-block;transition:transform 240ms var(--motion-ease)}
+:is(.track,.pl-item){transition:background-color 200ms ease,transform 200ms var(--motion-ease)}
+:is(.social,.spotify-link,.mv-link){transition:color 200ms ease,opacity 200ms ease}
+.social span{transition:transform 240ms var(--motion-ease)}
+@media(hover:hover) and (pointer:fine){
+  :is(.btn,.nav-cta,.release-listen,.beauty-button):hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(56,32,74,.13)}
+  :is(.btn,.release-listen,.beauty-button):hover [aria-hidden]{transform:translateX(2px)}
+  :is(.navlinks a,.filter-button,.menu-toggle):hover{transform:translateY(-1px)}
+  :is(.ghost-btn,.player-dock button.icon,.lightbox button,.beauty-dialog button):hover{transform:scale(1.04)}
+  .social:hover span{transform:translateX(3px)}
+}
+:is(.btn,.nav-cta,.release-listen,.beauty-button,.filter-button,.menu-toggle,.navlinks a,.ghost-btn,.player-dock button.icon,.lightbox button,.beauty-dialog button):active{transform:scale(.97);box-shadow:none;transition-duration:90ms}
+:is(.track,.pl-item):active{transform:scale(.992)}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto!important}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  :is(.btn,.nav-cta,.release-listen,.beauty-button,.filter-button,.menu-toggle,.navlinks a,.ghost-btn,.player-dock button.icon,.lightbox button,.beauty-dialog button,.track,.pl-item,.social span,.btn [aria-hidden],.release-listen [aria-hidden],.beauty-button [aria-hidden],.beauty-photo img,.shot img,.yt-thumb,.yt-play span,.album .art img){transform:none!important}
+}
