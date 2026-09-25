@@ -1,0 +1,6 @@
+/* Persistent music dock, with an independent scroll area for Beauty. */
+body.beauty-mode{overflow:hidden;background:#f7f3f9}
+body.beauty-mode>[hidden]{display:none!important}
+#beautyView{position:fixed;inset:0 0 auto;width:100%;height:calc(100dvh - var(--music-space,180px));border:0;z-index:35;background:#f7f3f9}
+#beautyView[hidden]{display:none}
+body.beauty-mode #playerDock{z-index:40}
